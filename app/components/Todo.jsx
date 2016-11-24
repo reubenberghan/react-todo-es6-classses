@@ -1,14 +1,18 @@
 'use strict';
 
-const React = require('react');
-const { connect } = require('react-redux');
-const moment = require('moment');
-const actions = require('actions');
+import React from 'react';
+import { connect } from 'react-redux';
+import moment from 'moment';
+import * as actions from 'actions';
 
 // exporting our component here allows us to access it in our tests
 // as what is exported below as the default has been passed through the `connect` method and expects a store
-export const Todo = React.createClass({
-    render: function renderTodo () {
+export class Todo extends React.Component {
+    constructor (props) {
+        super(props);
+    }
+
+    render () {
         const { id, text, completed, createdAt, completedAt, dispatch } = this.props;
         const todoClassName = completed ? 'todo todo-completed' : 'todo';
         const renderDate = () => {
@@ -33,7 +37,7 @@ export const Todo = React.createClass({
             </div>
         );
     }
-});
+}
 
 // we don't always need to pass state but calling connect on our exported component provides the `dispatch` method to our `props` object
 // allowing us to dispatch actions as in the case of `Todo` where we need to toggle todos

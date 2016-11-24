@@ -1,11 +1,16 @@
 'use strict';
 
-const React = require('react');
-const { connect } = require('react-redux');
-const actions = require('actions');
+import React from 'react';
+import { connect } from 'react-redux';
+import * as actions from 'actions';
 
-export const AddTodo = React.createClass({
-    handleSubmit: function onSubmitAddTodo (e) {
+export class AddTodo extends React.Component {
+    constructor (props) {
+        super(props);
+        this.handleSubmit = this.handleSubmit.bind(this);
+    }
+
+    handleSubmit (e) {
         e.preventDefault();
         const { dispatch } = this.props;
 
@@ -18,8 +23,9 @@ export const AddTodo = React.createClass({
             this.refs.todoText.focus();
         }
 
-    },
-    render: function renderAddTodo () {
+    }
+
+    render () {
         return (
             <div className="container__footer">
                 <form ref="form" onSubmit={ this.handleSubmit }>
@@ -29,6 +35,6 @@ export const AddTodo = React.createClass({
             </div>
         );
     }
-});
+}
 
 export default connect()(AddTodo);

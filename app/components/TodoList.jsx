@@ -1,13 +1,17 @@
 'use strict';
 
-const React = require('react');
-const { connect } = require('react-redux');
+import React from 'react';
+import { connect } from 'react-redux';
 import Todo from 'Todo';
-const TodoAPI = require('TodoAPI');
+import TodoAPI from 'TodoAPI';
 
 // as with our `Todo` component for testing we need to export our `TodoList` component before it has `connect` called on it
-export const TodoList = React.createClass({
-    render: function renderTodoList () {
+export class TodoList extends React.Component {
+    constructor (props) {
+        super(props);
+    }
+
+    render () {
         var { todos, showCompleted, searchText } = this.props;
 
         // as our todos come as an array list we need a function map over that array and return each item
@@ -40,7 +44,7 @@ export const TodoList = React.createClass({
             </div>
         );
     }
-});
+}
 
 // using the `connect` method from `react-redux` we can pass the requried state to the component
 // to ensure our 'connected' component is the one used when it is 'required' by other files we export it using `default`
