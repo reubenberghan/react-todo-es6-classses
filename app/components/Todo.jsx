@@ -8,10 +8,6 @@ import * as actions from 'actions';
 // exporting our component here allows us to access it in our tests
 // as what is exported below as the default has been passed through the `connect` method and expects a store
 export class Todo extends React.Component {
-    constructor (props) {
-        super(props);
-    }
-
     render () {
         const { id, text, completed, createdAt, completedAt, dispatch } = this.props;
         const todoClassName = completed ? 'todo todo-completed' : 'todo';

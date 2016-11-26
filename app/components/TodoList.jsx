@@ -7,10 +7,6 @@ import TodoAPI from 'TodoAPI';
 
 // as with our `Todo` component for testing we need to export our `TodoList` component before it has `connect` called on it
 export class TodoList extends React.Component {
-    constructor (props) {
-        super(props);
-    }
-
     render () {
         var { todos, showCompleted, searchText } = this.props;
 
